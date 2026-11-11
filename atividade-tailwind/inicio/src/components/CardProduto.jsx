@@ -1,14 +1,21 @@
 // EXERCÍCIO 4 (parte 2): card de um produto
-export default function CardProduto({ nome, preco, descricao, imagem }) {
+export default function CardProduto({ nome, preco, descricao, imagem, novo }) {
   return (
-    <article>
-      <img src={imagem} alt={nome} />
-      <div>
-        <div>
-          <h3>{nome}</h3>
-          <span>{preco}</span>
+    <article className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300 relative">
+      {novo && (
+        <span className="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md z-10">
+          Novo
+        </span>
+      )}
+      <img src={imagem} alt={nome} className="w-full h-48 object-cover" />
+      <div className="p-5">
+        <div className="flex justify-between items-center">
+          <h3 className="text-xl font-semibold">{nome}</h3>
+          <span className="bg-amber-100 text-amber-800 text-sm font-bold px-3 py-1 rounded-full">
+            {preco}
+          </span>
         </div>
-        <p>{descricao}</p>
+        <p className="mt-2 text-stone-600 text-sm">{descricao}</p>
       </div>
     </article>
   )
